@@ -14,7 +14,7 @@ router = APIRouter(
 # /me
 # /{id}
 router.include_router(
-    router=fastapi_users.get_register_router(
+    router=fastapi_users.get_users_router(
         UserRead,
         UserUpdate,
     )
