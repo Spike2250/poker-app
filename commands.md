@@ -13,6 +13,7 @@ do migration
 alembic upgrade head
 ```
 
+downgrade to prev migration
 ```bash
-
+alembic downgrade -1
 ```
