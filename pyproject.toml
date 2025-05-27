@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "fastapi-base-project-structure"
+name = "fastapi-with-users-structure"
 version = "0.1.0"
 description = ""
 authors = ["Shilov Ilia <shilov.spike2250@yandex.ru>"]
