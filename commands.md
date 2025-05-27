@@ -17,3 +17,8 @@ downgrade to prev migration
 ```bash
 alembic downgrade -1
 ```
+
+generate secret
+```bash
+python -c 'import secrets; print(secrets.token_hex())'
+```
