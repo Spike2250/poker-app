@@ -1,24 +1,28 @@
 from typing import TYPE_CHECKING
 
 from fastapi_users_db_sqlalchemy import (
-    # SQLAlchemyBaseUserTableUUID,
-    SQLAlchemyBaseUserTable,
+    SQLAlchemyBaseUserTableUUID,
+    # SQLAlchemyBaseUserTable,
     SQLAlchemyUserDatabase,
 )
 
-from core.types.user_id import UserIdType
+# from core.types.user_id import UserIdType
 from .base import Base
-from .mixins.int_id_pk import IntIdPkMixin
+# from .mixins.int_id_pk import IntIdPkMixin
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 
-# class User(Base, SQLAlchemyBaseUserTableUUID):
-#     pass
 
-
-class User(Base, IntIdPkMixin, SQLAlchemyBaseUserTable[UserIdType]):
+class User(Base, SQLAlchemyBaseUserTableUUID):
 
     @classmethod
     def get_db(cls, session: "AsyncSession"):
         return SQLAlchemyUserDatabase(session, cls)
+
+
+# class User(Base, IntIdPkMixin, SQLAlchemyBaseUserTable[UserIdType]):
+#
+#     @classmethod
+#     def get_db(cls, session: "AsyncSession"):
+#         return SQLAlchemyUserDatabase(session, cls)
