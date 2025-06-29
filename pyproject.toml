@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "fastapi-with-users-structure"
+name = "wom"
 version = "0.1.0"
 description = ""
 authors = ["Shilov Ilia <shilov.spike2250@yandex.ru>"]
@@ -20,6 +20,12 @@ orjson = "^3.10.18"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
+pytest = "^8.4.1"
+flake8 = "^7.3.0"
+pytest-asyncio = "^1.0.0"
+aiosqlite = "^0.21.0"
+httpx = "^0.28.1"
+anyio = "^4.9.0"
 
 [build-system]
 requires = ["poetry-core"]
