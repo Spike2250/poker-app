@@ -1,8 +1,9 @@
-
+import os
 from typing import Dict
 from pydantic import (
     BaseModel,
-    PostgresDsn
+    PostgresDsn,
+    AnyUrl,
 )
 from pydantic_settings import (
     BaseSettings,
@@ -36,6 +37,7 @@ class ApiPrefix(BaseModel):
 
 class DatabaseConfig(BaseModel):
     url: PostgresDsn
+    test_url: str = "sqlite+aiosqlite:///:memory:"
     echo: bool = False
     echo_pool: bool = False
     pool_size: int = 50
@@ -69,4 +71,15 @@ class Settings(BaseSettings):
     access_token: AccessToken
 
 
-settings = Settings()
+if os.environ.get('TESTING', None):
+    settings = Settings(
+        db=DatabaseConfig(
+            url='postgresql+asyncpg://user:pwd@localhost:5432/app'
+        ),
+        access_token=AccessToken(
+            reset_password_token_secret='some_secret',
+            verification_token_secret='some_secret',
+        )
+    )
+else:
+    settings = Settings()
