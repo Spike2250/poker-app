@@ -7,15 +7,15 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker,
     AsyncEngine,
 )
+
+
+os.environ['TESTING'] = "True"
 from core.config import settings
 from core.models import (
     Base,
     db_helper,
 )
 from main import app
-
-
-os.environ['TESTING'] = "True"
 
 
 @pytest.fixture(scope="session")
